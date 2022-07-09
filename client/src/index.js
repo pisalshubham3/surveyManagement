@@ -10,20 +10,29 @@ import ChangePassword from './pages/Account/ChangePassword'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import EditProfile from './pages/Account/EditProfile'
+import { Provider } from 'react-redux'
+import store from './store'
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
 const root = ReactDOM.createRoot(document.getElementById('root'))
+let persistor = persistStore(store)
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<First />} />
-        <Route path='/signin' element={<SignIn />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/forgotpassword' element={<ForgotPassword />} />
-        <Route path='/changepassword' element={<ChangePassword />} />
-        <Route path='/editprofile' element={<EditProfile />} />
-        <Route path='/app' element={<App />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<First />} />
+            <Route path='/signin' element={<SignIn />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/forgotpassword' element={<ForgotPassword />} />
+            <Route path='/changepassword' element={<ChangePassword />} />
+            <Route path='/editprofile' element={<EditProfile />} />
+            <Route path='/app' element={<App />} />
+          </Routes>
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 )
 
