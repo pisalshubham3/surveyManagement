@@ -21,7 +21,7 @@ root.render(
         <Route path='/forgotpassword' element={<ForgotPassword />} />
         <Route path='/changepassword' element={<ChangePassword />} />
         <Route path='/editprofile' element={<EditProfile />} />
-        <Route path='/' element={<App />} />
+        <Route path='/app' element={<App />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
